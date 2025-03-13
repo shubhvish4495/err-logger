@@ -56,7 +56,7 @@ func captureStackTrace(skip int) []stackFrame {
 	var stack []stackFrame
 	for _, pc := range pcs[:n] {
 		fn := runtime.FuncForPC(pc)
-		file, line := fn.FileLine(pc)
+		file, line := fn.FileLine(pc - 1) // Adjust the program counter to get the correct line number
 		if strings.Contains(file, goRootLocation) {
 			continue
 		}
