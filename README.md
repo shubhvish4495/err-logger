@@ -28,6 +28,7 @@ import "github.com/shubhvish4495/loghound"
 
 func main() {
     err := someFunction()
+    loghound.SetLogger(slog.New(slog.NewJsonLogger(os.Stdout, &slog.HandlerOptions{})))
     if err != nil {
         loghound.LogError(err, map[string]interface{}{
             "context": "main function",
